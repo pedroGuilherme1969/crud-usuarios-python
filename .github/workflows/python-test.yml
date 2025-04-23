@@ -1,22 +1,23 @@
-name: Testes Automatizados - Python
+name: Python Application Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    steps:      
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-        python-version: '3.12'
-    - name: Rodar testes
-      run: python -m unittest discover -s . -p 'test_*.py'
+          python-version: '3.12'
+      - name: Run tests
+        run: python -m unittest tests/test_app.py
